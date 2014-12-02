@@ -1,5 +1,6 @@
 #include "libtoa.h"
 #include <string.h>
+#include <limits.h>
 
 #define CHECK(BUFFSIZE, EXPECTED_FORMAT, FUNC, VALUE)                    \
     do {                                                                 \

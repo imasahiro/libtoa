@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -330,7 +329,7 @@ static inline int libtoa_put_uint8(char *buffer, int bufsiz, uint8_t val)
 
 static inline int libtoa_put_int16(char *buffer, int bufsiz, int16_t val)
 {
-    uint16_t v = val >= 0 ? val : -(uint16_t)(val);
+    uint16_t v = val >= 0 ? (uint16_t)val : -(uint16_t)(val);
     return libtoa_put_int_core(buffer, bufsiz, val < 0, v);
 }
 
@@ -341,7 +340,7 @@ static inline int libtoa_put_uint16(char *buffer, int bufsiz, uint16_t val)
 
 static inline int libtoa_put_int32(char *buffer, int bufsiz, int32_t val)
 {
-    uint32_t v = val >= 0 ? val : -(uint32_t)(val);
+    uint32_t v = val >= 0 ? (uint16_t)val : -(uint32_t)(val);
     return libtoa_put_int_core(buffer, bufsiz, val < 0, v);
 }
 
@@ -352,7 +351,7 @@ static inline int libtoa_put_uint32(char *buffer, int bufsiz, uint32_t val)
 
 static inline int libtoa_put_int64(char *buffer, int bufsiz, int64_t val)
 {
-    uint64_t v = val >= 0 ? val : -(uint64_t)(val);
+    uint64_t v = val >= 0 ? (uint64_t)val : -(uint64_t)(val);
     return libtoa_put_int_core(buffer, bufsiz, val < 0, v);
 }
 
