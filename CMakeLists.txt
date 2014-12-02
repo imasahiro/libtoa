@@ -15,6 +15,7 @@ SET(CMAKE_C_FLAGS_RELEASE "-O3 -g")
 SET(CMAKE_C_FLAGS_DEBUG   "-O0 -g3")
 string(TOUPPER ${CMAKE_BUILD_TYPE} uppercase_CMAKE_BUILD_TYPE)
 
+add_definitions(-D__STDC_LIMIT_MACROS)
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
     add_definitions(-DNDEBUG)
 endif()
