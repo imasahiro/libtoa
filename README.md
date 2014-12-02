@@ -1,6 +1,8 @@
 libtoa - an optimized to-ascii converter
 =====
 
+[![Build Status](https://secure.travis-ci.org/imasahiro/libtoa.png)](http://travis-ci.org/imasahiro/libtoa)
+
 Copyright (C) 2014 Masahiro Ide
 
 Introduction
