@@ -289,15 +289,15 @@ static inline int libtoa_put_int_core(char *buffer, int bufsiz, int neg, uint64_
     const char *digits = libtoa_get_digit_table();
     char *p;
     int len = ((val != 0) ? libtoa_log10u64(val) : 1);
+    int rest = 0;
     if (neg && bufsiz > 1) {
         bufsiz -= 1;
         *buffer++ = '-';
-        bufsiz--;
     }
     if (len > bufsiz) {
-        int n = len - bufsiz;
-        len -= n;
-        val /= libtoa_get_pow_of_10_table()[n];
+        rest = len - bufsiz;
+        len -= rest;
+        val /= libtoa_get_pow_of_10_table()[rest];
     }
 
     p = buffer + len;
@@ -314,7 +314,7 @@ static inline int libtoa_put_int_core(char *buffer, int bufsiz, int neg, uint64_
         *--p = digits[val * 2 + 1];
         *--p = digits[val * 2];
     }
-    return len + neg;
+    return neg + len + rest;
 }
 
 static inline int libtoa_put_int8(char *buffer, int bufsiz, int8_t val)
