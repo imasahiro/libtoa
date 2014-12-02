@@ -1,6 +1,7 @@
 #include "libtoa.h"
 #include <string.h>
 #include <limits.h>
+#include <assert.h>
 
 #define CHECK(BUFFSIZE, EXPECTED_FORMAT, FUNC, VALUE)                    \
     do {                                                                 \
@@ -12,6 +13,7 @@
             fprintf(stderr, "id=%d, line=%d.\n", test_id, __LINE__);     \
             fprintf(stderr, "expected: '%s'(%d)\n", buf1, len1);         \
             fprintf(stderr, "result  : '%s'(%d)\n", buf2, len2);         \
+            test_failed++;                                               \
         }                                                                \
         test_id++;                                                       \
     } while (0)
@@ -19,6 +21,7 @@
 int main(int argc, char const *argv[])
 {
     int test_id = 0;
+    int test_failed = 0;
 #define CHECK2(FUNC, B1, FMT, TYPE, MAX, MIN, V1, V2, V3) \
     do {                                                  \
         CHECK(B1, FMT, FUNC, (TYPE)0);                    \
@@ -43,5 +46,7 @@ int main(int argc, char const *argv[])
 
     CHECK2(libtoa_put_hex32_lower, 20, "%x", unsigned, INT_MAX, INT_MIN, 0x12, 0x789, 0x1234567);
     CHECK2(libtoa_put_hex32_lower, 3, "%x", unsigned, INT_MAX, INT_MIN, 0x12, 0x789, 0x1234567);
+    fprintf(stderr, "# tests: %d, # failed: %d\n", test_id, test_failed);
+    assert(test_failed == 0);
     return 0;
 }

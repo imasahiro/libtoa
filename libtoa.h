@@ -318,7 +318,7 @@ static inline int libtoa_put_int_core(char *buffer, int bufsiz, int neg, uint64_
 
 static inline int libtoa_put_int8(char *buffer, int bufsiz, int8_t val)
 {
-    uint8_t v = val >= 0 ? val : -(uint8_t)(val);
+    uint8_t v = val >= 0 ? (uint8_t)val : -(uint8_t)(val);
     return libtoa_put_int_core(buffer, bufsiz, val < 0, v);
 }
 
@@ -340,7 +340,7 @@ static inline int libtoa_put_uint16(char *buffer, int bufsiz, uint16_t val)
 
 static inline int libtoa_put_int32(char *buffer, int bufsiz, int32_t val)
 {
-    uint32_t v = val >= 0 ? (uint16_t)val : -(uint32_t)(val);
+    uint32_t v = val >= 0 ? (uint32_t)val : -(uint32_t)(val);
     return libtoa_put_int_core(buffer, bufsiz, val < 0, v);
 }
 
@@ -383,7 +383,7 @@ static inline int libtoa_put_char(char *buffer, int bufsiz, char ch)
 
 static inline int libtoa_put_pointer(char *buffer, int bufsiz, void *ptr)
 {
-    uint64_t val = (uint64_t)ptr;
+    uint64_t val = (uint64_t)((long)ptr);
     if (bufsiz > (int)sizeof("0x")) {
         *buffer++ = '0';
         *buffer++ = 'x';
