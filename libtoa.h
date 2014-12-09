@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#ifndef LIBTOA_LIBTOA_H
+#define LIBTOA_LIBTOA_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#ifndef LIBTOA_LIBTOA_H
-#define LIBTOA_LIBTOA_H
 
 static inline int libtoa_get_hex_length(uint64_t val)
 {
@@ -391,7 +391,7 @@ static inline int libtoa_put_pointer(char *buffer, int bufsiz, void *ptr)
     return 2 + libtoa_put_hex64_lower(buffer, bufsiz - 2, val);
 }
 
-#endif /* end of include guard */
 #ifdef __cplusplus
 }
 #endif
+#endif /* end of include guard */
