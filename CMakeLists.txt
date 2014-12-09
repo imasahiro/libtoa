@@ -24,8 +24,8 @@ set(INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${INCLUDE_DIRS})
 
 enable_testing()
-add_executable(test1 libtoa_test.c)
-add_executable(test2 libtoa_test2.cpp)
+add_executable(test1 test/libtoa_test.c)
+add_executable(test2 test/libtoa_test2.cpp)
 add_test(test1 test1)
 add_test(test2 test2)
 
