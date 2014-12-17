@@ -11,7 +11,7 @@ extern "C" {
 static inline int libtoa_get_hex_length(uint64_t val)
 {
     if (val) {
-        int bits = sizeof(long long) * 8 - __builtin_clzll(val);
+        int bits = sizeof(uint64_t) * 8 - __builtin_clzll(val);
         return (bits + 3) >> 2;
     }
     else {
@@ -366,7 +366,7 @@ static inline int libtoa_put_string(char *buffer, int bufsiz, char *str, int len
     if (len > bufsiz) {
         len = bufsiz;
     }
-    for (i = 0; *str && i < len; ++i) {
+    for (i = 0; i < len; ++i) {
         *buffer++ = *str++;
     }
     return i;
