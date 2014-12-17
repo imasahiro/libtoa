@@ -54,3 +54,7 @@ static inline int libtoa_put_char(char *buffer, int bufsiz, char ch)
 ```
 static inline int libtoa_put_string(char *buffer, int bufsiz, char *str, int len)
 ```
+
+TODO
+---
+[ ] support double-to-ascii convertion (or use grisu)
