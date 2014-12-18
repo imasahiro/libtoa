@@ -1,15 +1,15 @@
 language: c
 compiler:
-  - clang
-  - gcc
-
+- clang
+- gcc
 before_install:
-  - "sudo apt-get install cmake"
-
+- sudo apt-get install cmake
 before_script:
-  - "mkdir -p build"
-  - "cd build"
-  - "cmake ../"
-  - "make"
-
-script: "make test"
+- mkdir -p build
+- cd build
+- cmake ../
+- make
+script: make test
+notifications:
+  slack:
+    secure: UfLOtgww0fOhuhkX/yqmjIRxz+IQvdJVCL3BQkg/92BgMbCeLGNNRMrI5cwL+oqTvPV53yFEe++5CAshqZfW78gplEk6E5RpT5dL82kNwxdg3RuHelrsR0YPDXfG6rf99Fl4r5FxzBjsKd/zgzYuFiS5icvpgMq6wAKYXwkhUJo=
